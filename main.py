@@ -9,6 +9,7 @@ screen.title("My Snake game")
 turtle_position = [(0, 0),(-20, 0),(-40, 0)]
 new_obj = []
 
+#creates the snake body
 for i in turtle_position:
   tim = Turtle("square")
   tim.color("white")
