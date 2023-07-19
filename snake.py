@@ -8,6 +8,7 @@ DOWN = 279
 LEFT = 180
 RIGHT = 0
 
+
 #creates the snake body
 class Snake:
 
@@ -17,14 +18,20 @@ class Snake:
     self.head = self.segments[0]
 
   def create_snake(self):
-    for i in STARTING_POSITIONS:
-      tim = Turtle("square")
-      tim.penup()
-      tim.color("white")
-      tim.goto(i)
-      self.segments.append(tim)
+    for position in STARTING_POSITIONS:
+      self.add_segment(position)
 
-  
+  def add_segment(self, position):
+    new_segment = Turtle("square")
+    new_segment.penup()
+    new_segment.color("white")
+    new_segment.goto(position)
+    self.segments.append(new_segment)
+
+  def extend(self):
+    #add a new segment to the snake
+    self.add_segment(self.segments[-1].position())
+
   def move(self):
     for i in range(len(self.segments) - 1, 0, -1):
       new_x = self.segments[i - 1].xcor()
