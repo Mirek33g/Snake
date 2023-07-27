@@ -4,7 +4,7 @@ STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 DIRECTIONS = [90, 180, 270]
 UP = 90
-DOWN = 279
+DOWN = 280
 LEFT = 180
 RIGHT = 0
 
@@ -27,6 +27,13 @@ class Snake:
     new_segment.color("white")
     new_segment.goto(position)
     self.segments.append(new_segment)
+
+  def reset(self):
+    for seg in self.segments:
+      seg.goto(1000, 1000)
+    self.segments.clear()
+    self.create_snake()
+    self.head = self.segments[0]
 
   def extend(self):
     #add a new segment to the snake
